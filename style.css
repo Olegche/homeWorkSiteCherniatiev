@@ -11,11 +11,15 @@ h1 {
     float: left;
     font-family: Georgia;
     font-size: 18pt;
-    text-shadow: 1px 1px 1px rgb(52, 54, 48), 0 0 1em rgb(100, 219, 219);
+    text-shadow: 1px 1px 1px rgb(94, 94, 91), 0 0 1em rgb(62, 202, 204);
 }
-    
+
+.homeWorks li a {
+color : springgreen
+} 
+
 .homeWorks li a:hover {
-    color: springgreen
+    color: rgb(247, 185, 233)
 }
 
 .homeWorks {
