@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./script.js"></script>
+</head>
+
+<body>
+    <h1>Звіт з підпиємницької діяльності</h1>
+    <div>
+        Кількість років :
+        <input type="number" id="inpYears">
+    </div>
+
+    <div>
+        <table border="1px">
+             <thead>
+                <tr>
+                    <th>рік</th>
+                    <th>розмір прибутку</th>
+                </tr>
+             </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div>
+        Податок : 5%
+        <div>
+            Чи є податкова пільга 2%
+             <input type="checkBox" id="taxCheck">
+        </div>
+    </div>
+    <div>
+        <button id="resBtnIncome">
+             обчислити загальний прибуток
+        </button>
+    </div>
+    <div>
+        загальний прибуток за виключенням податків : 
+        <input type="number" id="inpResincome">
+    </div>
+
+    <div>
+         сплачено податків від прибутку : 
+        <input type="number" id="inpTax">
+    </div>
+</body>
+
+</html>

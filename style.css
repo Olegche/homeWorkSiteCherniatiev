@@ -1,0 +1,30 @@
+h1 {
+   text-align: center;  
+   color: honeydew;
+   margin-top: 200px;
+   font-size: 50pt;
+} 
+
+.homeWorks {
+    color: honeydew;
+    margin-right: -99%;
+    float: left;
+    font-family: Georgia;
+    font-size: 18pt;
+    text-shadow: 1px 1px 1px rgb(52, 54, 48), 0 0 1em rgb(100, 219, 219);
+}
+    
+.homeWorks li a:hover {
+    color: springgreen
+}
+
+.homeWorks {
+    color: honeydew
+}
+
+.author {
+    text-align: center; 
+    color:honeydew;
+    font-size: 21pt;
+    
+}
