@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="divId">
+
+    </div>
+
+    <script>
+        class Calculator {
+            constructor(step = 20, speed = 20) {
+                this.step = step
+                this.speed = speed
+            }
+
+            ClickOnButtons(e) { // створив функцію яка буде передавати значення натиснутих кнопок в інпут
+                if (e.target.tagName === 'DIV')
+                    this.input
+                    .value //  якщо буду натиснено не на кнопку, а на область div,  інпут залишаеться незмінним
+                else
+                if (e.target.value === 'c')
+                    this.input.value = '' //  при натисканні на с інпут буде приймати значення порожнього рядку
+                else
+                if (e.target.value === '=')
+                    this.input.value = eval(this.input
+                        .value
+                        ) //при натисканні = ,eval виконує код із стрінги (все що введено в поле інпуту буде виконано як код js)
+                else
+                    this.input.value += e.target
+                    .value // при напискання на інші кнопки, їхні значення будуть добавлятися в інпут
+            }
+
+
+
+            render(containerId) {
+                const container = document.getElementById(containerId)
+                let div = document.createElement('div')
+                div.innerText = 'Drunken calculator'
+                div.style.fontSize = '30px'
+                div.style.fontFamily = 'monospace'
+                
+                this.btn0 = document.createElement('button')
+                this.btn0.innerText = '0'
+                this.btn0.value = '0'
+                this.btn0.style.position = 'absolute'
+                this.btn0.style.left = '400px'
+                this.btn0.style.top = '400px'
+                this.btn0.style.fontSize = '30px'
+                this.btn0.style.width = '70px'
+                this.btn0.style.height = '70px'
+                this.btn0.style.transform = "rotate(3deg)"
+                div.appendChild(this.btn0)
+
+                this.btn1 = document.createElement('button')
+                this.btn1.innerText = '1'
+                this.btn1.value = '1'
+                this.btn1.style.position = 'absolute'
+                this.btn1.style.left = '400px'
+                this.btn1.style.top = '400px'
+                this.btn1.style.fontSize = '20px'
+                this.btn1.style.width = '60px'
+                this.btn1.style.height = '50px'
+                this.btn1.style.transform = "rotate(15deg)"
+                div.appendChild(this.btn1)
+
+                this.btn2 = document.createElement('button')
+                this.btn2.innerText = '2'
+                this.btn2.value = '2'
+                this.btn2.style.position = 'absolute'
+                this.btn2.style.left = '400px'
+                this.btn2.style.top = '400px'
+                this.btn2.style.fontSize = '50px'
+                this.btn2.style.width = '100px'
+                this.btn2.style.height = '70px'
+                this.btn2.style.transform = "rotate(-90deg)"
+                div.appendChild(this.btn2)
+
+                this.btn3 = document.createElement('button')
+                this.btn3.innerText = '3'
+                this.btn3.value = '3'
+                this.btn3.style.position = 'absolute'
+                this.btn3.style.left = '400px'
+                this.btn3.style.top = '400px'
+                this.btn3.style.fontSize = '90px'
+                this.btn3.style.width = '70px'
+                this.btn3.style.height = '180px'
+                this.btn3.style.transform = "rotate(80deg)"
+                div.appendChild(this.btn3)
+
+                this.btn4 = document.createElement('button')
+                this.btn4.innerText = '4'
+                this.btn4.value = '4'
+                this.btn4.style.position = 'absolute'
+                this.btn4.style.left = '400px'
+                this.btn4.style.top = '400px'
+                this.btn4.style.fontSize = '60px'
+                this.btn4.style.width = '80px'
+                this.btn4.style.height = '100px'
+                this.btn4.style.transform = "rotate(-20deg)"
+                div.appendChild(this.btn4)
+                this.btn5 = document.createElement('button')
+                this.btn5.innerText = '5'
+                this.btn5.value = '5'
+                this.btn5.style.position = 'absolute'
+                this.btn5.style.left = '400px'
+                this.btn5.style.top = '400px'
+                this.btn5.style.fontSize = '90px'
+                this.btn5.style.width = '100px'
+                this.btn5.style.height = '100px'
+                this.btn5.style.transform = "rotate(45deg)"
+                div.appendChild(this.btn5)
+                this.btn6 = document.createElement('button')
+                this.btn6.innerText = '6'
+                this.btn6.value = '6'
+                this.btn6.style.position = 'absolute'
+                this.btn6.style.left = '400px'
+                this.btn6.style.top = '400px'
+                this.btn6.style.fontSize = '30px'
+                this.btn6.style.width = '75px'
+                this.btn6.style.height = '100px'
+                this.btn6.style.transform = "rotate(-7deg)"
+                div.appendChild(this.btn6)
+                this.btn7 = document.createElement('button')
+                this.btn7.innerText = '7'
+                this.btn7.value = '7'
+                this.btn7.style.position = 'absolute'
+                this.btn7.style.left = '400px'
+                this.btn7.style.top = '400px'
+                this.btn7.style.fontSize = '95px'
+                this.btn7.style.width = '77px'
+                this.btn7.style.height = '200px'
+                this.btn7.style.transform = "rotate(30deg)"
+                div.appendChild(this.btn7)
+
+                this.btn8 = document.createElement('button')
+                this.btn8.innerText = '8'
+                this.btn8.value = '8'
+                this.btn8.style.position = 'absolute'
+                this.btn8.style.left = '400px'
+                this.btn8.style.top = '400px'
+                this.btn8.style.fontSize = '50px'
+                this.btn8.style.width = '180px'
+                this.btn8.style.height = '80px'
+                this.btn8.style.transform = "rotate(19deg)"
+                div.appendChild(this.btn8)
+
+                this.btn9 = document.createElement('button')
+                this.btn9.innerText = '9'
+                this.btn9.value = '9'
+                this.btn9.style.position = 'absolute'
+                this.btn9.style.left = '400px'
+                this.btn9.style.top = '400px'
+                this.btn9.style.fontSize = '99px'
+                this.btn9.style.width = '90px'
+                this.btn9.style.height = '130px'
+                this.btn9.style.transform = "rotate(7deg)"
+                div.appendChild(this.btn9)
+
+                this.btnPlus = document.createElement('button')
+                this.btnPlus.innerText = '+'
+                this.btnPlus.value = '+'
+                this.btnPlus.style.position = 'absolute'
+                this.btnPlus.style.left = '900px'
+                this.btnPlus.style.top = '400px'
+                this.btnPlus.style.width = '70px'
+                this.btnPlus.style.height = '70px'
+                this.btnPlus.style.backgroundColor = 'red'
+                this.btnPlus.style.fontSize = '50px'
+                div.appendChild(this.btnPlus)
+
+                this.btnMinus = document.createElement('button')
+                this.btnMinus.innerText = '-'
+                this.btnMinus.value = '-'
+                this.btnMinus.style.position = 'absolute'
+                this.btnMinus.style.left = '900px'
+                this.btnMinus.style.top = '400px'
+                this.btnMinus.style.width = '70px'
+                this.btnMinus.style.height = '70px'
+                this.btnMinus.style.backgroundColor = 'coral'
+                this.btnMinus.style.fontSize = '50px'
+                div.appendChild(this.btnMinus)
+
+                this.btnMult = document.createElement('button')
+                this.btnMult.innerText = '*'
+                this.btnMult.value = '*'
+                this.btnMult.style.position = 'absolute'
+                this.btnMult.style.left = '900px'
+                this.btnMult.style.top = '400px'
+                this.btnMult.style.width = '70px'
+                this.btnMult.style.height = '70px'
+                this.btnMult.style.backgroundColor = 'royalblue'
+                this.btnMult.style.fontSize = '50px'
+                div.appendChild(this.btnMult)
+
+                this.btnDiv = document.createElement('button')
+                this.btnDiv.innerText = '/'
+                this.btnDiv.value = '/'
+                this.btnDiv.style.position = 'absolute'
+                this.btnDiv.style.left = '900px'
+                this.btnDiv.style.top = '400px'
+                this.btnDiv.style.width = '70px'
+                this.btnDiv.style.height = '70px'
+                this.btnDiv.style.backgroundColor = 'crimson'
+                this.btnDiv.style.fontSize = '50px'
+                div.appendChild(this.btnDiv)
+
+                this.btnDot = document.createElement('button')
+                this.btnDot.innerText = '.'
+                this.btnDot.value = '.'
+                this.btnDot.style.position = 'absolute'
+                this.btnDot.style.left = '900px'
+                this.btnDot.style.top = '400px'
+                this.btnDot.style.width = '70px'
+                this.btnDot.style.height = '70px'
+                this.btnDot.style.backgroundColor = 'burlywood'
+                this.btnDot.style.fontSize = '50px'
+                div.appendChild(this.btnDot)
+
+                this.btnRes = document.createElement('button')
+                this.btnRes.innerText = '='
+                this.btnRes.value = '='
+                this.btnRes.style.position = 'absolute'
+                this.btnRes.style.left = '900px'
+                this.btnRes.style.top = '400px'
+                this.btnRes.style.width = '70px'
+                this.btnRes.style.height = '70px'
+                this.btnRes.style.backgroundColor = 'chartreuse'
+                this.btnRes.style.fontSize = '50px'
+                div.appendChild(this.btnRes)
+
+                this.btnClean = document.createElement('button')
+                this.btnClean.innerText = 'c'
+                this.btnClean.value = 'c'
+                this.btnClean.style.position = 'absolute'
+                this.btnClean.style.left = '900px'
+                this.btnClean.style.top = '400px'
+                this.btnClean.style.width = '70px'
+                this.btnClean.style.height = '70px'
+                this.btnClean.style.backgroundColor = 'limegreen'
+                this.btnClean.style.fontSize = '50px'
+                div.appendChild(this.btnClean)
+                container.appendChild(div)
+
+                div.appendChild(this.btn4)
+                div.onclick = this.ClickOnButtons.bind(this)
+
+                let divInp = document.createElement('div')
+                this.input = document.createElement('input')
+                this.input.style.position = 'absolute'
+                this.input.style.left = '400px'
+                this.input.style.top = '10px'
+                this.input.style.backgroundColor = 'gold'
+                this.input.style.fontSize = '55px'
+                this.input.style.width = '500px'
+                this.input.style.height = '70px'
+                this.input.readOnly =
+                    true //  не даємо можливість ввести в інпут сторонні значення окрім натиснутих кнопок
+                divInp.appendChild(this.input)
+                container.appendChild(divInp)
+                this.timer = setInterval(this.Move.bind(this), this.speed);
+
+            }
+
+            Move() {
+                //  при переборі назначається одинакові рандомні значення, і кнопки рухаються синхронно, тому довелось для кожної кнопки назначати рандом
+                this.btn0.style.left = parseInt(this.btn0.style.left) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn0.style.top = parseInt(this.btn0.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn1.style.left = parseInt(this.btn1.style.left) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn1.style.top = parseInt(this.btn1.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn2.style.left = parseInt(this.btn2.style.left) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn2.style.top = parseInt(this.btn2.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn3.style.left = parseInt(this.btn3.style.left) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn3.style.top = parseInt(this.btn3.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn4.style.left = parseInt(this.btn4.style.left) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn4.style.top = parseInt(this.btn4.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn5.style.left = parseInt(this.btn5.style.left) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn5.style.top = parseInt(this.btn5.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn6.style.left = parseInt(this.btn6.style.left) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn6.style.top = parseInt(this.btn6.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn7.style.left = parseInt(this.btn7.style.left) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn7.style.top = parseInt(this.btn7.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn8.style.left = parseInt(this.btn8.style.left) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn8.style.top = parseInt(this.btn8.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn9.style.left = parseInt(this.btn9.style.left) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btn9.style.top = parseInt(this.btn9.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btnPlus.style.left = parseInt(this.btnPlus.style.left) + this.step / 2 - Math.floor(Math
+                    .random() * this.step) + 'px'
+                this.btnPlus.style.top = parseInt(this.btnPlus.style.top) + this.step / 2 - Math.floor(Math
+                .random() * this.step) + 'px'
+                this.btnMinus.style.left = parseInt(this.btnMinus.style.left) + this.step / 2 - Math.floor(Math
+                    .random() * this.step) + 'px'
+                this.btnMinus.style.top = parseInt(this.btnMinus.style.top) + this.step / 2 - Math.floor(Math
+                    .random() * this.step) + 'px'
+                this.btnMult.style.left = parseInt(this.btnMult.style.left) + this.step / 2 - Math.floor(Math
+                    .random() * this.step) + 'px'
+                this.btnMult.style.top = parseInt(this.btnMult.style.top) + this.step / 2 - Math.floor(Math
+                .random() * this.step) + 'px'
+                this.btnDiv.style.left = parseInt(this.btnDiv.style.left) + this.step / 2 - Math.floor(Math
+                .random() * this.step) + 'px'
+                this.btnDiv.style.top = parseInt(this.btnDiv.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btnDot.style.left = parseInt(this.btnDot.style.left) + this.step / 2 - Math.floor(Math
+                .random() * this.step) + 'px'
+                this.btnDot.style.top = parseInt(this.btnDot.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btnRes.style.left = parseInt(this.btnRes.style.left) + this.step / 2 - Math.floor(Math
+                .random() * this.step) + 'px'
+                this.btnRes.style.top = parseInt(this.btnRes.style.top) + this.step / 2 - Math.floor(Math.random() *
+                    this.step) + 'px'
+                this.btnClean.style.left = parseInt(this.btnClean.style.left) + this.step / 2 - Math.floor(Math
+                    .random() * this.step) + 'px'
+                this.btnClean.style.top = parseInt(this.btnClean.style.top) + this.step / 2 - Math.floor(Math
+                    .random() * this.step) + 'px'
+
+            } 
+
+        }
+
+        window.onload = function () {
+            let calculator = new Calculator(70, 600)
+            calculator.render('divId')
+        }
+    </script>
+</body>
+
+</html>
