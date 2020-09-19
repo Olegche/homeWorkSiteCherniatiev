@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- Задача. Створити клас «Тренажер арифметичних операцій» -->
+    <script>
+        // створити функцію для випадкових чисел та випадкової операції
+        // перевірити чи вірно введено результат
+        class MathChecker {
+            constructor(min = 1, max = 10) {
+                this.min = min
+                this.max = max
+            }
+
+            GetRandomNum(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min
+            }
+
+            GetRandomOper() {
+                let operations = ['+', '-', '*', '/']
+                return operations[this.GetRandomNum(0, 3)]
+            }
+
+            NewTask = () => {
+                this.inputFirstNum.value = this.GetRandomNum(this.min, this.max)
+                this.operation.innerText = this.GetRandomOper()
+                this.inputSecondNum.value = this.GetRandomNum(this.min, this.max)
+
+            }
+
+            isTrue() {
+                switch (this.operation.innerText) {
+                    case '+':
+                        return this.correctAnswer = this.firstNum + this.secondNum
+                    case '-':
+                        return this.correctAnswer = this.firstNum - this.secondNum
+                    case '*':
+                        return this.correctAnswer = this.firstNum * this.secondNum
+                    case '/':
+                        return this.correctAnswer = this.firstNum / this.secondNum
+                    default:
+                        return 'pokerface'
+
+                }
+
+            }
+
+            CheckRes() {
+
+                this.firstNum = parseInt(this.inputFirstNum.value)
+                this.secondNum = parseInt(this.inputSecondNum.value)
+                this.userVersion = parseInt(this.resultVersion.value)
+                this.correctAnswer = this.isTrue()
+                if (this.userVersion == this.correctAnswer)
+                    this.yourResulrIs.innerText = 'okey'
+                else
+                    this.yourResulrIs.innerText = 'keep learning'
+                this.NewTask()
+
+            }
+
+            render(containerId) {
+                this.container = document.getElementById(containerId)
+                let div = document.createElement('div')
+                let label = document.createElement('label')
+                label.innerText = 'First number :'
+
+                this.inputFirstNum = document.createElement('input')
+                this.inputFirstNum.readOnly = true
+                this.inputFirstNum.value = this.GetRandomNum(this.min, this.max)
+                label.appendChild(this.inputFirstNum)
+                div.appendChild(label)
+                this.container.appendChild(div)
+
+                div = document.createElement('div')
+                label = document.createElement('label')
+                label.innerText = 'Operation : '
+                div.appendChild(label)
+                this.operation = document.createElement('label')
+                this.operation.innerText = this.GetRandomOper()
+                div.appendChild(this.operation)
+                this.container.appendChild(div)
+
+                div = document.createElement('div')
+                label = document.createElement('label')
+                label.innerText = 'Second number :'
+                this.inputSecondNum = document.createElement('input')
+                this.inputSecondNum.readOnly = true
+                this.inputSecondNum.value = this.GetRandomNum(this.min, this.max)
+                label.appendChild(this.inputSecondNum)
+                div.appendChild(label)
+                this.container.appendChild(div)
+
+                let horizontal = document.createElement('hr')
+                div.appendChild(horizontal)
+
+                div = document.createElement('div')
+                label = document.createElement('label')
+                label.innerText = 'Your version of result : '
+                this.resultVersion = document.createElement('input')
+                this.resultVersion.setAttribute('type', 'number')
+                label.appendChild(this.resultVersion)
+                div.appendChild(label)
+                let btn = document.createElement('button')
+                btn.innerText = 'Check'
+                btn.onclick = this.CheckRes.bind(this)
+                div.appendChild(btn)
+                this.container.appendChild(div)
+
+                div = document.createElement('div')
+                label = document.createElement('label')
+                label.innerText = 'Result : '
+                div.appendChild(label)
+                this.yourResulrIs = document.createElement('span')
+
+                div.appendChild(this.yourResulrIs)
+                this.container.appendChild(div)
+
+
+            }
+
+        }
+
+        // На основі цього класу створити клас «Тестер», який виконує перевірку вказаної кількості завдань (при цьому зберігає неправильні відповіді), нараховує бали у 100 бальній шкалі.
+        class Tester extends MathChecker {
+            constructor(min = 1, max = 10) {
+                super(min, max)
+            }
+
+            CheckRes() {
+                if (this.totalQuestInp.value != 0) {
+                    super.CheckRes()
+                    this.totalQuestInp.value -= 1
+                    this.currentQuestInp.value = parseInt(this.currentQuestInp.value) + 1
+                    if (this.userVersion == this.correctAnswer)
+                        this.score.value = parseInt(this.score.value) + 10
+                    else {
+                        this.score.value -= 10
+
+                        let table = document.createElement('table')
+                        table.border = "1px"
+                        table.style.border = "1px solid black"
+                        let tr = document.createElement('tr')
+                        let th = document.createElement('th')
+                        th.innerText = 'your wrong answer : '
+                        tr.appendChild(th)
+                        table.appendChild(tr)
+                        this.container.appendChild(table)
+                        th = document.createElement('th')
+                        th.innerText = 'true answer is : '
+                        tr.appendChild(th)
+                        table.appendChild(tr)
+                        this.container.appendChild(table)
+
+                        tr = document.createElement('tr')
+                        let td = document.createElement('td')
+                        td.style.color = 'red'
+                        td.innerText =
+                            `${this.firstNum} ${this.operation.innerText} ${this.secondNum} = ${this.userVersion}`
+                        tr.appendChild(td)
+                        td = document.createElement('td')
+                        td.style.color = 'green'
+                        td.innerText =
+                            `${this.firstNum} ${this.operation.innerText} ${this.secondNum} = ${this.correctAnswer}`
+                        tr.appendChild(td)
+                        table.appendChild(tr)
+                        this.container.appendChild(table)
+
+                    }
+                }
+
+
+            }
+
+            render(container) {
+                super.render(container)
+                let div = document.createElement('div')
+                let label = document.createElement('label')
+                label.innerText = 'Total quastions count : '
+                div.appendChild(label)
+                this.totalQuestInp = document.createElement('input')
+                this.totalQuestInp.value = 10
+                this.totalQuestInp.readOnly = true
+                label.appendChild(this.totalQuestInp)
+                div.appendChild(label)
+                this.container.appendChild(div)
+
+                div = document.createElement('div')
+                label = document.createElement('label')
+                label.innerText = 'Current quastions count : '
+                div.appendChild(label)
+                this.currentQuestInp = document.createElement('input')
+                this.currentQuestInp.setAttribute('type', 'number')
+                this.currentQuestInp.value = 1
+                this.currentQuestInp.readOnly = true
+                label.appendChild(this.currentQuestInp)
+                div.appendChild(label)
+                this.container.appendChild(div)
+
+                div = document.createElement('div')
+                label = document.createElement('label')
+                label.innerText = 'Score : '
+                div.appendChild(label)
+                this.score = document.createElement('input')
+                this.score.value = 0
+                this.score.readOnly = true
+                label.appendChild(this.score)
+                div.appendChild(label)
+                this.container.appendChild(div)
+
+            }
+
+        }
+
+        window.onload = function () {
+            let checker1 = new Tester
+            checker1.render('container')
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div id="container">
+    </div>
+
+</body>
+
+</html>
