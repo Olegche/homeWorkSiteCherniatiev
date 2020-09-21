@@ -25,7 +25,7 @@
                 return operations[this.GetRandomNum(0, 3)]
             }
 
-            NewTask = () => {
+            NewTask()  {
                 this.inputFirstNum.value = this.GetRandomNum(this.min, this.max)
                 this.operation.innerText = this.GetRandomOper()
                 this.inputSecondNum.value = this.GetRandomNum(this.min, this.max)
@@ -33,7 +33,7 @@
             }
 
             isTrue() {
-                switch (this.oper) {
+                switch (this.operation.innerText) {
                     case '+':
                         return this.correctAnswer = this.firstNum + this.secondNum
                     case '-':
@@ -53,7 +53,6 @@
 
                 this.firstNum = parseInt(this.inputFirstNum.value)
                 this.secondNum = parseInt(this.inputSecondNum.value)
-                this.oper = this.operation.innerText
                 this.userVersion = parseInt(this.resultVersion.value)
                 this.correctAnswer = this.isTrue()
                 if (this.userVersion == this.correctAnswer)
@@ -140,7 +139,7 @@
                     if (this.userVersion == this.correctAnswer)
                         this.score.value = parseInt(this.score.value) + 10
                     else {
-                        this.score.value -= 10
+                        this.score.value = this.score.value
 
                         let table = document.createElement('table')
                         table.border = "1px"
@@ -161,12 +160,12 @@
                         let td = document.createElement('td')
                         td.style.color = 'red'
                         td.innerText =
-                            `${this.firstNum} ${this.oper} ${this.secondNum} = ${this.userVersion}`
+                            `${this.firstNum} ${this.operation.innerText} ${this.secondNum} = ${this.userVersion}`
                         tr.appendChild(td)
                         td = document.createElement('td')
                         td.style.color = 'green'
                         td.innerText =
-                            `${this.firstNum} ${this.oper} ${this.secondNum} = ${this.correctAnswer}`
+                            `${this.firstNum} ${this.operation.innerText} ${this.secondNum} = ${this.correctAnswer}`
                         tr.appendChild(td)
                         table.appendChild(tr)
                         this.container.appendChild(table)
