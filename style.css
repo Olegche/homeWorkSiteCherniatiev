@@ -1,9 +1,11 @@
 h1 {
-   text-align: center;  
-   color: honeydew;
-   margin-top: 200px;
-   font-size: 50pt;
-} 
+    text-align: center;
+    color: honeydew;
+    margin-top: 200px;
+    font-size: 50pt;
+    -webkit-animation: pulsing 3s infinite;
+    animation: pulsing 111s infinite;
+}
 
 .homeWorks {
     color: honeydew;
@@ -12,23 +14,64 @@ h1 {
     font-family: Georgia;
     font-size: 18pt;
     text-shadow: 1px 1px 1px rgb(94, 94, 91), 0 0 1em rgb(62, 202, 204);
+  
+
 }
 
 .homeWorks li a {
-color : springgreen
-} 
+    color: springgreen;
+    
+}
 
 .homeWorks li a:hover {
-    color: rgb(247, 185, 233)
+    color: rgb(247, 185, 233);
+    
 }
 
 .homeWorks {
     color: honeydew
+    
 }
 
 .author {
-    text-align: center; 
-    color:honeydew;
+    text-align: center;
+    color: honeydew;
     font-size: 21pt;
+  
     
+
+}
+
+@-webkit-keyframes pulsing {
+    0% {
+        -webkit-transform: scale(0.5, 0.5);
+        transform: scale(0.5, 0.5)
+    }
+
+    50% {
+        -webkit-transform: scale(1.0, 1.0);
+        transform: scale(1.0, 1.0);
+    }
+
+    100% {
+        -webkit-transform: scale(1.5, 1.5);
+        transform: scale(1.5, 1.5);
+    }
+}
+
+@keyframes pulsing {
+    0% {
+        -webkit-transform: scale(1.5, 1.5);
+        transform: scale(1.5, 1.5)
+    }
+
+    50% {
+        -webkit-transform: scale(1.0, 1.0);
+        transform: scale(1.0, 1.5);
+    }
+
+    100% {
+        -webkit-transform: scale(1.5, 1.5);
+        transform: scale(1.5, 1.5);
+    }
 }
